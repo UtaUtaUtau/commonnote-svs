@@ -1,4 +1,4 @@
-var SCRIPT_TITLE = "commonnote Copy Notes";
+var SCRIPT_TITLE = "commonnote Copy";
 
 function getClientInfo() {
     return {
