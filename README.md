@@ -28,5 +28,6 @@
 
 # Progress
  - [x] Copy
- - [ ] Paste (at playhead)
- - [ ] Paste (relative to group)
+ - [x] Paste (at playhead)
+ - [x] Paste (relative to group)
+ - [ ] Paste groups as well
