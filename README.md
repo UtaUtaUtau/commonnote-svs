@@ -11,6 +11,10 @@
       - `Alt + Shift + V` : Paste (absolute to track)
     - You may add `Ctrl` if it is preferred.
 
+# Special Thanks
+ - [layetri](https://bsky.app/profile/did:plc:7pxorada7qfusdcsogow33yi): Making commonnote
+ - [Xero](https://bsky.app/profile/did:plc:gu3mc2q4cdbsjjcyo44ye53w) (**Warning:** 18+ account): Japanese translation help
+
 # Progress
  - [x] Copy
  - [ ] Paste (at playhead)

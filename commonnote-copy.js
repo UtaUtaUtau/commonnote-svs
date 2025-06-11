@@ -11,7 +11,7 @@ function getClientInfo() {
 }
 
 function getTranslations(langCode) {
-    if (langCode == "ja-jp") {
+    if (langCode == "ja-jp") { // thank you to Xero for translation help!
         return [
             [SCRIPT_TITLE, "commonnote コピー"],
             ["No content is selected.", "コンテンツが選択されていません。"]
