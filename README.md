@@ -8,7 +8,7 @@
     - Suggestions:
       - `Alt + C` : Copy
       - `Alt + V` : Paste (at playhead)
-      - `Alt + Shift + V` : Paste (absolute to track)
+      - `Alt + Shift + V` : Paste (relative to group)
     - You may add `Ctrl` if it is preferred.
 
 # Special Thanks
@@ -19,4 +19,4 @@
 # Progress
  - [x] Copy
  - [ ] Paste (at playhead)
- - [ ] Paste (absolute to track)
+ - [ ] Paste (relative to group)
