@@ -1,5 +1,5 @@
 # commonnote-svs
- Synthesizer V Studio scripts for supporting [commonnote](https://github.com/ExpressiveLabs/commonnote) as a cross-application copy paste paradigm.
+ Synthesizer V Studio scripts for supporting [commonnote](https://github.com/ExpressiveLabs/commonnote) as a cross-application copy paste specification.
 
 # Installation
  1. Clone this repository in any way you prefer and put it in the corresponding scripts folder for Synthesizer V Pro or Synthesizer V 2 Pro.
