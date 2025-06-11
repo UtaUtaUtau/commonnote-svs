@@ -10,3 +10,8 @@
       - `Alt + V` : Paste (at playhead)
       - `Alt + Shift + V` : Paste (absolute to track)
     - You may add `Ctrl` if it is preferred.
+
+# Progress
+ - [x] Copy
+ - [ ] Paste (at playhead)
+ - [ ] Paste (absolute to track)
