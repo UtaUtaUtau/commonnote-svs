@@ -14,6 +14,7 @@
 # Special Thanks
  - [layetri](https://bsky.app/profile/did:plc:7pxorada7qfusdcsogow33yi): Making commonnote
  - [Xero](https://bsky.app/profile/did:plc:gu3mc2q4cdbsjjcyo44ye53w) (**Warning:** 18+ account): Japanese translation help
+ - [UTAU France](https://utaufrance.com/): French translation help
 
 # Progress
  - [x] Copy
