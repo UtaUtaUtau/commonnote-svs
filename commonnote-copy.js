@@ -13,8 +13,14 @@ function getClientInfo() {
 function getTranslations(langCode) {
     if (langCode == "ja-jp") { // thank you to Xero for translation help!
         return [
-            [SCRIPT_TITLE, "commonnote コピー"],
+            [SCRIPT_TITLE, "commonnoteコピー"],
             ["No content is selected.", "コンテンツが選択されていません。"]
+        ];
+    }
+    if (langCode == "fr-fr") { // thank you Mim for translation help!
+        return [
+            [SCRIPT_TITLE, "Copier commonnote"],
+            ["No content is selected.", "Aucun contenu sélectionné."]
         ];
     }
     return [];
