@@ -17,7 +17,7 @@ function getTranslations(langCode) {
             ["No content is selected.", "コンテンツが選択されていません。"]
         ];
     }
-    if (langCode == "fr-fr") { // thank you Mim for translation help!
+    if (langCode == "fr-fr") { // thank you UTAU France for translation help!
         return [
             [SCRIPT_TITLE, "Copier commonnote"],
             ["No content is selected.", "Aucun contenu sélectionné."]

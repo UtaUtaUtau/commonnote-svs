@@ -11,6 +11,16 @@
       - `Alt + Shift + V` : Paste (relative to group)
     - You may add `Ctrl` if it is preferred.
 
+# Functions
+### Copy
+ Copies notes into the commonnote specification to the system's clipboard. This includes Synthesizer V group data as well.
+
+### Paste (at playhead)
+ Pastes notes where the start of first note is placed directly on the playhead's position. The position of the playhead is snapped according to the grid to avoid positioning issues.
+
+### Paste (relative to group)
+ Pastes notes where the notes are pasted directly at the start of the selected group. Offsets from the start of the data is preserved.
+
 # Special Thanks
  - [layetri](https://bsky.app/profile/did:plc:7pxorada7qfusdcsogow33yi): Making commonnote
  - [Xero](https://bsky.app/profile/did:plc:gu3mc2q4cdbsjjcyo44ye53w) (**Warning:** 18+ account): Japanese translation help
