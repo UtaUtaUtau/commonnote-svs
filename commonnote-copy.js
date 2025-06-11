@@ -61,7 +61,10 @@ function main() {
                     "length": note.getDuration(),
                     "label": note.getLyrics(),
                     "pitch": note.getPitch(),
-                    "extra": note.getAttributes()
+                    "extra": {
+                        "phonemes": note.getPhonemes(),
+                        "attributes": note.getAttributes()
+                    }
                 });
             }
 
@@ -72,6 +75,7 @@ function main() {
                 var onset = group.getOnset();
                 var pitchOffset = group.getPitchOffset();
                 var groupData = {
+                    "uuid": target.getUUID(),
                     "name": target.getName(),
                     "start": onset,
                     "pitchOffset": pitchOffset,
@@ -88,7 +92,10 @@ function main() {
                         "length": note.getDuration(),
                         "label": note.getLyrics(),
                         "pitch": note.getPitch() + pitchOffset,
-                        "extra": note.getAttributes()
+                        "extra": {
+                            "phonemes": note.getPhonemes(),
+                            "attributes": note.getAttributes()
+                        }
                     }); // push notes with proper offsets to notes array
 
                     groupData.notes.push({
@@ -96,7 +103,10 @@ function main() {
                         "length": note.getDuration(),
                         "label": note.getLyrics(),
                         "pitch": note.getPitch(),
-                        "extra": note.getAttributes()
+                        "extra": {
+                            "phonemes": note.getPhonemes(),
+                            "attributes": note.getAttributes()
+                        }
                     }); // push notes to group data
                 }
 
