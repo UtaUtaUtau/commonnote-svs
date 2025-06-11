@@ -17,7 +17,8 @@ function getTranslations(langCode) {
             ["Cannot parse JSON.", "JSONをパースできません。"],
             ["Invalid data.", "データが無効です。"],
             ["Invalid identifier.", "識別子が無効です。"],
-            ["No notes in data.", "データにノートはありません。"]
+            ["No notes in data.", "データにノートはありません。"],
+            ["Pasting out of group bounds. Continue?", "グループ外への貼り付け、続ける？"]
         ];
     }
     if (langCode == "fr-fr") { // thank you UTAU France for translation help!
@@ -26,7 +27,8 @@ function getTranslations(langCode) {
             ["Cannot parse JSON.", "Lecture du JSON impossible."],
             ["Invalid data.", "Données invalidées."],
             ["Invalid identifier.", "Identifiant invalide."],
-            ["No notes in data.", "Aucune note trouvée."]
+            ["No notes in data.", "Aucune note trouvée."],
+            ["Pasting out of group bounds. Continue?", "La copie est en dehors des limites du groupe. Voulez-vous continuer ?"]
         ];
     }
     return [];
@@ -60,9 +62,12 @@ function main() {
 
         var fromSV = data.header.origin == "synthesizer-v-studio"; // if from synthv
         var resolutionFactor = SV.QUARTER / data.header.resolution; // for converting resolutions
-        var firstNoteStart = Infinity;
+        var dataStart = Infinity;
+        var dataEnd = -Infinity;
         for (var i in data.notes) {
-            firstNoteStart = Math.min(firstNoteStart, data.notes[i].start);
+            var note = data.notes[i];
+            dataStart = Math.min(dataStart, note.start);
+            dataEnd = Math.max(dataEnd, note.start + note.length);
         }
 
         var group = SV.getMainEditor().getCurrentGroup(); // current group ref
@@ -72,23 +77,30 @@ function main() {
 
         // playhead position relative to group snapped to grid in blicks
         var playheadPos = coords.snap(timeAxis.getBlickFromSeconds(SV.getPlayback().getPlayhead())) - group.getOnset();
+        var pasteEnd = (dataEnd - dataStart) * resolutionFactor + playheadPos;
+        var doPaste = true;
+        if ((playheadPos < 0 || pasteEnd > group.getDuration()) && !group.isMain()) {
+            doPaste = SV.showOkCancelBox(SV.T(SCRIPT_TITLE), SV.T("Pasting out of group bounds. Continue?"));
+        }
 
-        for (var i in data.notes) { // add notes to group
-            var noteData = data.notes[i];
+        if (doPaste) {
+            for (var i in data.notes) { // add notes to group
+                var noteData = data.notes[i];
 
-            // convert note data to SV note
-            var note = SV.create("Note");
-            note.setOnset((noteData.start - firstNoteStart) * resolutionFactor + playheadPos);
-            note.setDuration(noteData.length * resolutionFactor);
-            note.setLyrics(noteData.label);
-            note.setPitch(noteData.pitch);
-            // sv specific data
-            if (fromSV) {
-                note.setPhonemes(noteData.extra.phonemes);
-                note.setAttributes(noteData.extra.attributes);
+                // convert note data to SV note
+                var note = SV.create("Note");
+                note.setOnset((noteData.start - dataStart) * resolutionFactor + playheadPos);
+                note.setDuration(noteData.length * resolutionFactor);
+                note.setLyrics(noteData.label);
+                note.setPitch(noteData.pitch);
+                // sv specific data
+                if (fromSV) {
+                    note.setPhonemes(noteData.extra.phonemes);
+                    note.setAttributes(noteData.extra.attributes);
+                }
+
+                target.addNote(note);
             }
-
-            target.addNote(note);
         }
     } catch (error) {
         if (error instanceof SyntaxError) {
